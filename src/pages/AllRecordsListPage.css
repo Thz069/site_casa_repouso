@@ -1,0 +1,122 @@
+/* src/pages/AllRecordsListPage.css */
+
+/* Container principal da página de listagem de todos os prontuários */
+.all-records-list-page-container {
+  max-width: 1200px; /* Largura máxima para a página */
+  margin: 20px auto; /* Centraliza a página com margens superior/inferior */
+  padding: 20px 30px; /* Espaçamento interno */
+  font-family: Arial, sans-serif; /* Fonte padrão */
+  background-color: #f9f9f9; /* Cor de fundo suave para a página */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Sombra suave */
+}
+
+/* Título principal da página */
+.all-records-list-page-container h2 {
+  text-align: center; /* Centraliza o título */
+  color: #333; /* Cor escura para o texto do título */
+  margin-bottom: 30px; /* Espaço abaixo do título */
+  font-size: 1.8em; /* Tamanho da fonte do título */
+}
+
+/* Estilos para mensagens de carregamento, erro ou quando não há prontuários */
+.page-loading,
+.page-error,
+.no-records-message {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 1.1em;
+  color: #555; /* Cor padrão para mensagens informativas */
+  border: 1px dashed #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.page-error {
+  color: #dc3545; /* Cor vermelha para mensagens de erro */
+  background-color: #f8d7da; /* Fundo avermelhado claro para erros */
+  border-color: #f5c6cb; /* Borda avermelhada para erros */
+}
+
+.no-records-message {
+  color: #17a2b8; /* Cor informativa (ciano) */
+  background-color: #d1ecf1; /* Fundo ciano claro */
+  border-color: #bee5eb; /* Borda ciano */
+}
+
+
+/* Container para futuros filtros */
+.filters-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Tabela que lista todos os prontuários */
+.all-records-table {
+  width: 100%; /* Tabela ocupa toda a largura disponível */
+  border-collapse: collapse; /* Remove espaços entre as bordas das células */
+  margin-top: 20px; /* Espaço acima da tabela */
+  background-color: #fff; /* Fundo branco para a tabela */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para a tabela */
+  border-radius: 6px; /* Bordas arredondadas para a tabela (se não usar a borda em cada célula) */
+  overflow: hidden; /* Garante que o box-shadow não seja cortado por conteúdo interno */
+}
+
+/* Células do cabeçalho (th) e células de dados (td) da tabela */
+.all-records-table th,
+.all-records-table td {
+  border: 1px solid #e0e0e0; /* Borda sutil para as células */
+  padding: 12px 15px; /* Espaçamento interno das células */
+  text-align: left; /* Alinhamento do texto à esquerda */
+  font-size: 0.95em; /* Tamanho da fonte do conteúdo da tabela */
+  vertical-align: middle; /* Alinhamento vertical do conteúdo ao meio */
+}
+
+/* Estilo específico para as células do cabeçalho (th) */
+.all-records-table th {
+  background-color: #e9ecef; /* Cor de fundo clara para o cabeçalho */
+  color: #495057; /* Cor de texto escura para o cabeçalho */
+  font-weight: 600; /* Peso da fonte para o cabeçalho */
+  font-size: 1em;
+}
+
+/* Estilo para linhas pares (tbody tr:nth-child(even)) para listras (melhora a legibilidade) */
+.all-records-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa; /* Cor de fundo muito clara para linhas pares */
+}
+
+/* Efeito de hover nas linhas da tabela */
+.all-records-table tbody tr:hover {
+  background-color: #e2e6ea; /* Cor de fundo ao passar o mouse sobre uma linha */
+}
+
+/* Estilo para os botões de ação dentro da tabela */
+.all-records-table .action-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-right: 5px; /* Espaço entre botões se houver mais de um */
+}
+
+.all-records-table .action-button:hover {
+  transform: translateY(-1px); /* Pequeno efeito de elevação */
+}
+
+/* Estilo específico para o botão "Ver Detalhes" do prontuário */
+.all-records-table .view-record-details {
+  background-color: #17a2b8; /* Cor ciano/info */
+  color: white;
+}
+
+.all-records-table .view-record-details:hover {
+  background-color: #138496; /* Tom mais escuro de ciano no hover */
+}

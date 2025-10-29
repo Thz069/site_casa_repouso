@@ -1,0 +1,113 @@
+/* src/components/PatientForm.css */
+.patient-form-container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+  }
+  
+  .patient-form-container h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  
+  .patient-form .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaço entre os campos na mesma linha */
+    margin-bottom: 15px;
+  }
+  
+  .patient-form .form-group {
+    flex: 1; /* Faz os grupos de formulário ocuparem espaço igual */
+    min-width: 250px; /* Largura mínima antes de quebrar a linha */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .patient-form .form-group label {
+    margin-bottom: 6px;
+    color: #555;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .patient-form .form-group input[type="text"],
+  .patient-form .form-group input[type="date"],
+  .patient-form .form-group input[type="tel"],
+  .patient-form .form-group input[type="email"],
+  .patient-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.95em;
+  }
+  
+  .patient-form .form-group textarea {
+    resize: vertical;
+  }
+  
+  .patient-form .submit-button {
+    background-color: #4CAF50; /* Verde para salvar */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    display: block;
+    margin: 20px auto 0 auto; /* Centraliza o botão */
+    transition: background-color 0.3s ease;
+  }
+  
+  .patient-form .submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .patient-form .submit-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .form-message {
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  
+  .form-message.success {
+    background-color: #e6ffed;
+    color: #28a745;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+ 
+.patient-form .form-group select.form-input-select {
+  /* Herda a maioria dos estilos dos inputs normais, mas pode precisar de ajustes específicos */
+  width: 100%;
+  padding: 12px; /* Ajuste conforme o padding dos seus inputs de texto */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  background-color: #fdfdfd;
+  height: auto; /* Para garantir que a altura se ajuste ao conteúdo, ou defina uma altura fixa */
+  /* Aparência pode variar entre navegadores, estilização avançada de selects é mais complexa */
+}
+
+.patient-form .form-group select.form-input-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  outline: none;
+}

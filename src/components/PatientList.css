@@ -1,0 +1,121 @@
+/* src/components/PatientList.css */
+.patient-list-container {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.patient-list-container h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.list-message {
+  text-align: center;
+  padding: 15px;
+  color: #555;
+  font-size: 1em;
+}
+
+.list-message.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: 4px;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.patient-table th,
+.patient-table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.9em;
+  vertical-align: middle;
+}
+
+.patient-table th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: bold;
+}
+
+.patient-table tbody tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+.patient-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.actions-cell {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
+  gap: 6px; /* Espaço entre os botões */
+  align-items: center;
+}
+
+.action-button {
+  padding: 5px 8px; /* Reduzido um pouco para acomodar mais botões */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8em; /* Reduzido um pouco */
+  min-width: 60px; /* Ajustado */
+  text-align: center;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  line-height: 1.4; /* Para melhor alinhamento vertical do texto */
+}
+
+.action-button:hover {
+  opacity: 0.85;
+}
+
+.view-details {
+  background-color: #007bff; /* Azul */
+  color: white;
+}
+.view-details:hover {
+  background-color: #0056b3;
+}
+
+.edit-patient {
+  background-color: #ffc107; /* Amarelo/Laranja */
+  color: #212529;
+}
+.edit-patient:hover {
+  background-color: #e0a800;
+}
+
+.delete-patient {
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+}
+.delete-patient:hover {
+  background-color: #c82333;
+}
+
+/* ESTILOS PARA OS NOVOS BOTÕES DE PRONTUÁRIO */
+.view-all-records-list {
+  background-color: #17a2b8; /* Ciano/Info */
+  color: white;
+}
+.view-all-records-list:hover {
+  background-color: #117a8b;
+}
+
+.add-new-record-list {
+  background-color: #28a745; /* Verde/Sucesso */
+  color: white;
+}
+.add-new-record-list:hover {
+  background-color: #1e7e34;
+}

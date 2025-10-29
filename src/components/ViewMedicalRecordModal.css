@@ -1,0 +1,136 @@
+/* src/components/ViewMedicalRecordModal.css */
+.modal-overlay-view-record {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1060; /* Acima de outros modais, se necessário */
+  padding: 20px;
+}
+
+.modal-content-view-record {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 750px; /* Pode ser um pouco maior para exibir mais texto */
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+.modal-close-button-view-record {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #777;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-close-button-view-record:hover {
+  color: #333;
+}
+
+.modal-content-view-record h2 {
+  text-align: center;
+  color: #2c3e50; /* Azul escuro para o título */
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.6em;
+}
+
+.record-patient-name,
+.record-attendant-name {
+  text-align: center;
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+.record-patient-name strong,
+.record-attendant-name strong {
+    color: #333;
+}
+
+
+.record-section {
+  margin-bottom: 25px;
+}
+
+.record-section h3 {
+  font-size: 1.15em;
+  color: #34495e; /* Azul acinzentado para subtítulos */
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ecf0f1; /* Borda clara */
+}
+
+.record-field {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.record-field-label {
+  font-weight: 600;
+  color: #333;
+  margin-right: 8px;
+}
+
+.record-field-value {
+  color: #555;
+}
+
+.record-field-value.pre-wrap {
+  white-space: pre-wrap; /* Para respeitar quebras de linha no plano_proxima_sessao */
+  display: block; /* Para que o span ocupe a linha e a quebra funcione bem */
+  margin-top: 4px;
+  padding-left: 10px; /* Pequena indentação para o valor */
+  border-left: 2px solid #ecf0f1;
+}
+
+
+.record-section-timestamps {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.85em;
+    color: #777;
+}
+.record-section-timestamps .record-field {
+    margin-bottom: 5px;
+}
+
+
+.modal-actions-view-record {
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.modal-back-button-view-record {
+  background-color: #007bff; /* Azul para Voltar/OK */
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.modal-back-button-view-record:hover {
+  background-color: #0056b3;
+}

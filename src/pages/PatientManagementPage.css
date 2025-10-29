@@ -1,0 +1,69 @@
+/* src/pages/PatientManagementPage.css */
+.patient-management-page {
+  padding: 20px;
+  max-width: 1200px; /* Limita a largura máxima da página */
+  margin: 0 auto; /* Centraliza a página */
+  font-family: Arial, sans-serif;
+}
+
+.patient-management-page h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.toggle-form-button {
+  background-color: #5c67f2; /* Cor do botão principal */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-bottom: 25px;
+  display: block; /* Para ocupar a largura e permitir margem auto se necessário */
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-form-button:hover {
+  background-color: #4a54c4; /* Cor do botão principal no hover */
+}
+
+/* Estilos para o container de busca e input */
+.search-container {
+  margin-top: 20px; /* Espaço acima do campo de busca, se o formulário estiver escondido */
+  margin-bottom: 25px; /* Espaço abaixo do campo de busca */
+  display: flex;
+  justify-content: center; /* Centraliza o input se ele tiver largura menor que o container */
+}
+
+.search-input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 100%; /* Ocupa toda a largura do .search-container se ele for limitado */
+  max-width: 600px; /* Limita a largura máxima do campo de busca */
+  box-sizing: border-box; /* Garante que padding não aumente a largura total */
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #5c67f2; /* Cor de destaque no foco */
+  box-shadow: 0 0 0 0.2rem rgba(92, 103, 242, 0.25); /* Sombra suave no foco */
+}
+
+/* Estilos para mensagens de erro ou carregamento da lista de pacientes (se aplicável diretamente aqui) */
+.patient-list-loading,
+.patient-list-error {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.patient-list-error {
+  color: #dc3545; /* Vermelho para erros */
+}

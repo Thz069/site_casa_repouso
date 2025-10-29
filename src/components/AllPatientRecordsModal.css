@@ -1,0 +1,129 @@
+/**
+ * @file src/components/AllPatientRecordsModal.css
+ * @description Estilos para o modal que exibe a lista de todos os prontuários de um paciente.
+ */
+
+/**
+ * Overlay do modal.
+ * Cobre toda a tela para dar foco ao conteúdo do modal e permitir o fechamento ao clicar fora.
+ */
+.modal-overlay-all-records {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo do modal horizontalmente */
+  align-items: center; /* Centraliza o conteúdo do modal verticalmente */
+  z-index: 1050; /* Garante que o modal fique sobre outros elementos, como o modal de detalhes do paciente */
+}
+
+/**
+ * Contêiner principal do conteúdo do modal.
+ */
+.modal-content-all-records {
+  background-color: white;
+  padding: 25px 35px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+  width: 90%; /* Responsivo, ocupa 90% da largura da tela */
+  max-width: 800px; /* Largura máxima para telas maiores */
+  max-height: 90vh; /* Altura máxima relativa à altura da viewport */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+  position: relative; /* Para posicionamento absoluto de elementos filhos, como o botão de fechar */
+}
+
+/**
+ * Botão de fechar (ícone "×") no canto superior direito do modal.
+ */
+.modal-close-button-all-records {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8em; /* Tamanho do ícone */
+  color: #888; /* Cor padrão do ícone */
+  cursor: pointer;
+}
+
+.modal-close-button-all-records:hover {
+  color: #333; /* Cor do ícone ao passar o mouse */
+}
+
+/**
+ * Título principal dentro do modal.
+ */
+.modal-content-all-records h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee; /* Linha separadora abaixo do título */
+  padding-bottom: 15px;
+}
+
+/**
+ * Estilos para mensagens de feedback, como carregamento ou ausência de registros.
+ */
+.loading-message-all-records,
+.no-records-message {
+  text-align: center;
+  padding: 20px;
+  color: #555;
+  font-size: 1.1em;
+}
+
+/**
+ * Contêiner para a lista de itens de prontuário.
+ */
+.records-list-container {
+  margin-top: 10px;
+}
+
+/**
+ * Estilo para cada item individual na lista de prontuários.
+ */
+.record-item {
+  background-color: #f9f9f9; /* Fundo levemente destacado para cada item */
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+  padding: 15px 20px;
+  margin-bottom: 20px; /* Espaçamento entre os itens de prontuário */
+}
+
+.record-item:last-child {
+  margin-bottom: 0; /* Remove a margem inferior do último item */
+}
+
+/**
+ * Título dentro de cada item de prontuário (ex: "Atendimento de [data]").
+ */
+.record-item h4 {
+  color: #444;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.05em;
+  border-bottom: 1px dashed #ccc; /* Linha separadora para o título do item */
+  padding-bottom: 8px;
+}
+
+/**
+ * Parágrafos de informação dentro de cada item de prontuário.
+ */
+.record-item p {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 7px;
+}
+
+/**
+ * Estilo para o texto em negrito (rótulos) dentro dos parágrafos de informação.
+ */
+.record-item p strong {
+  color: #333;
+  margin-right: 5px;
+}

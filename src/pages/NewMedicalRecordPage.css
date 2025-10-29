@@ -1,0 +1,174 @@
+/* src/pages/NewMedicalRecordPage.css */
+
+/* Estilo para o contêiner principal da página de novo registro médico */
+.new-record-page-container {
+    max-width: 900px; /* Define a largura máxima do contêiner */
+    margin: 20px auto; /* Centraliza o contêiner na página com margens superior/inferior de 20px */
+    padding: 25px 35px; /* Adiciona preenchimento interno (25px vertical, 35px horizontal) */
+    background-color: #fff; /* Define a cor de fundo como branca */
+    border-radius: 8px; /* Arredonda as bordas do contêiner */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Adiciona uma sombra sutil para profundidade */
+    font-family: Arial, sans-serif; /* Define a família de fontes padrão */
+}
+
+/* Estilo para o título principal (h2) dentro do contêiner */
+.new-record-page-container h2 {
+    text-align: center; /* Centraliza o texto do título */
+    color: #333; /* Define a cor do texto do título (cinza escuro) */
+    margin-top: 0; /* Remove a margem superior padrão */
+    margin-bottom: 10px; /* Adiciona uma margem inferior */
+}
+
+/* Estilo para informações do atendente */
+.attendant-info {
+    text-align: center; /* Centraliza o texto */
+    color: #666; /* Define a cor do texto (cinza médio) */
+    font-size: 0.9em; /* Define o tamanho da fonte (90% do pai) */
+    margin-bottom: 25px; /* Adiciona uma margem inferior */
+}
+
+/* Estilos para indicadores de estado da página (carregamento e erro) */
+.page-loading,
+.page-error {
+    text-align: center; /* Centraliza o texto */
+    padding: 30px; /* Adiciona preenchimento interno */
+    font-size: 1.2em; /* Define o tamanho da fonte */
+    color: #555; /* Define a cor do texto (cinza) */
+}
+
+/* Estilo para links dentro de mensagens de erro */
+.page-error a {
+    display: inline-block; /* Permite definir margens/padding e manter na linha */
+    margin-left: 10px; /* Adiciona uma margem à esquerda */
+    color: #007bff; /* Define a cor do link (azul) */
+    text-decoration: none; /* Remove o sublinhado padrão */
+}
+
+/* Estilo para links dentro de mensagens de erro ao passar o mouse */
+.page-error a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+
+/* Estilo para o botão de voltar */
+.back-button {
+    background: none; /* Remove o fundo padrão */
+    border: none; /* Remove a borda padrão */
+    color: #007bff; /* Define a cor do texto (azul) */
+    cursor: pointer; /* Muda o cursor para indicar clicabilidade */
+    font-size: 0.95em; /* Define o tamanho da fonte */
+    margin-bottom: 15px; /* Adiciona uma margem inferior */
+    padding: 5px 0; /* Adiciona preenchimento vertical */
+}
+
+/* Estilo para o botão de voltar ao passar o mouse */
+.back-button:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+
+/* Estilo para a grade do formulário de novo registro */
+.new-record-form .form-grid {
+    display: grid; /* Habilita o layout de grade CSS */
+    gap: 20px; /* Define o espaçamento entre os itens da grade */
+    /* Por padrão, uma coluna. Para duas colunas, descomente abaixo e ajuste .full-width */
+    /* grid-template-columns: repeat(2, 1fr); */ /* Define duas colunas de largura igual se descomentado */
+}
+
+/* Estilo para grupos de formulário (contêiner para label e input) */
+.new-record-form .form-group {
+    display: flex; /* Habilita o layout flexbox */
+    flex-direction: column; /* Organiza os itens em coluna (label acima do input) */
+}
+
+/* Modificador para um grupo de formulário ocupar toda a largura da grade */
+/* Útil quando a grade tem múltiplas colunas */
+.new-record-form .form-group.full-width {
+    grid-column: 1 / -1; /* Faz o item ocupar todas as colunas da grade */
+}
+
+
+/* Estilo para rótulos (labels) dentro de grupos de formulário */
+.new-record-form .form-group label {
+    margin-bottom: 8px; /* Adiciona margem abaixo do rótulo */
+    color: #444; /* Define a cor do texto (cinza escuro) */
+    font-weight: bold; /* Define o texto em negrito */
+    font-size: 0.9em; /* Define o tamanho da fonte */
+}
+
+/* Estilo para campos de entrada (datetime-local, text) e áreas de texto */
+.new-record-form .form-group input[type="datetime-local"],
+.new-record-form .form-group input[type="text"],
+.new-record-form .form-group textarea {
+    width: 100%; /* Faz o campo ocupar 100% da largura do seu contêiner */
+    padding: 12px; /* Adiciona preenchimento interno */
+    border: 1px solid #ccc; /* Define uma borda cinza clara */
+    border-radius: 5px; /* Arredonda as bordas do campo */
+    box-sizing: border-box; /* Inclui padding e border na largura/altura total do elemento */
+    font-size: 0.95em; /* Define o tamanho da fonte interna do campo */
+    background-color: #fdfdfd; /* Define um fundo levemente off-white */
+}
+
+/* Estilo para campos de entrada e áreas de texto quando em foco (selecionados) */
+.new-record-form .form-group input:focus,
+.new-record-form .form-group textarea:focus {
+    border-color: #007bff; /* Muda a cor da borda para azul ao focar */
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Adiciona uma sombra de foco azulada */
+    outline: none; /* Remove o contorno padrão do navegador ao focar */
+}
+
+
+/* Estilo específico para áreas de texto (textarea) */
+.new-record-form .form-group textarea {
+    resize: vertical; /* Permite que o usuário redimensione a área de texto verticalmente */
+    min-height: 80px; /* Define uma altura mínima para a área de texto */
+}
+
+/* Estilo para o botão de submissão do formulário */
+.new-record-form .submit-button {
+    background-color: #28a745; /* Verde para salvar (cor de sucesso) */
+    color: white; /* Cor do texto branca */
+    padding: 12px 25px; /* Preenchimento interno (12px vertical, 25px horizontal) */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Arredonda as bordas do botão */
+    cursor: pointer; /* Muda o cursor para indicar clicabilidade */
+    font-size: 1.05em; /* Define o tamanho da fonte */
+    display: block; /* Faz o botão ocupar a largura disponível e permite margem auto */
+    margin: 30px auto 10px auto; /* Centraliza o botão com margens (30px topo, auto laterais, 10px base) */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave para a cor de fundo */
+    min-width: 200px; /* Define uma largura mínima para o botão */
+}
+
+/* Estilo para o botão de submissão ao passar o mouse */
+.new-record-form .submit-button:hover {
+    background-color: #218838; /* Escurece o fundo ao passar o mouse */
+}
+
+/* Estilo para o botão de submissão quando desabilitado */
+.new-record-form .submit-button:disabled {
+    background-color: #aaa; /* Define um fundo cinza para indicar desabilitado */
+    cursor: not-allowed; /* Muda o cursor para indicar que não é clicável */
+}
+
+/* Estilo base para mensagens de feedback do formulário (sucesso/erro) */
+.form-message {
+    text-align: center; /* Centraliza o texto da mensagem */
+    padding: 12px; /* Adiciona preenchimento interno */
+    margin-top: 20px; /* Adiciona margem acima da mensagem */
+    border-radius: 5px; /* Arredonda as bordas da caixa de mensagem */
+    font-size: 0.95em; /* Define o tamanho da fonte */
+}
+
+/* Estilo para mensagens de sucesso */
+.form-message.success {
+    background-color: #d4edda; /* Fundo verde claro */
+    color: #155724; /* Texto verde escuro */
+    border: 1px solid #c3e6cb; /* Borda verde clara */
+}
+
+/* Estilo para mensagens de erro */
+.form-message.error {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    border: 1px solid #f5c6cb; /* Borda vermelho clara */
+}
