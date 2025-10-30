@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+# Casa de Acompanhamento Espiritual - Sistema de Gestão
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um sistema web desenvolvido em React para a gestão de pacientes e seus prontuários de acompanhamento espiritual. A aplicação permite que usuários autorizados (atendentes) gerenciem informações de pacientes e registrem novos atendimentos de forma organizada e segura.
 
-## Available Scripts
+## 🏛️ Arquitetura e Estrutura de Arquivos
 
-In the project directory, you can run:
+O projeto é estruturado de forma modular para separar responsabilidades, facilitando a manutenção e escalabilidade.
 
-### `npm start`
+- **`src/components`**: Contém componentes React reutilizáveis, como formulários, listas e modais (ex: `PatientForm`, `PatientList`, `AllPatientRecordsModal`).
+- **`src/pages`**: Contém os componentes que representam as páginas completas da aplicação (ex: `PatientManagementPage`, `NewMedicalRecordPage`). Eles organizam os componentes menores para formar uma visão completa.
+- **`src/contexts`**: Gerencia o estado global da aplicação. Atualmente, inclui o `AuthContext` para controlar a autenticação do usuário em toda a aplicação.
+- **`src/services`**: Camada responsável pela comunicação com a API do backend. O arquivo `api.js` centraliza todas as chamadas `fetch` para os endpoints do servidor.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Funcionalidades Detalhadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. Autenticação
+- **Login Simulado:** Acesso seguro via página de login. **Atualmente, a autenticação é simulada no frontend** (`src/services/api.js`) com as credenciais:
+  - **Usuário:** `atendente`
+  - **Senha:** `senha123`
+- **Rotas Protegidas:** Utiliza `ProtectedRoute` para garantir que apenas usuários autenticados acessem as páginas de dados.
 
-### `npm test`
+### 2. Gestão de Pacientes (CRUD Completo)
+- **Cadastro:** Um formulário completo para registrar novos pacientes.
+- **Visualização:** Lista todos os pacientes com uma função de busca para filtragem rápida.
+- **Detalhes:** Um modal exibe todas as informações de um paciente selecionado.
+- **Atualização:** O mesmo formulário de cadastro é usado para editar as informações de um paciente existente.
+- **Exclusão:** Funcionalidade para remover um paciente do sistema (requer confirmação).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Gestão de Prontuários
+- **Criação de Prontuário:** Formulário para adicionar um novo registro de atendimento a um paciente específico, incluindo detalhes da sessão e plano para o futuro.
+- **Histórico de Prontuários:** Um modal permite visualizar todos os prontuários já registrados para um paciente.
+- **Lista Geral de Prontuários:** Uma página dedicada lista todos os prontuários de todos os pacientes, permitindo uma visão geral dos atendimentos.
+- **Atualização da Próxima Consulta:** Ao criar um prontuário, é possível definir ou atualizar a data da próxima consulta geral do paciente.
 
-### `npm run build`
+## 🔌 Interação com a API Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O frontend espera que um servidor backend esteja rodando e respondendo na seguinte URL base:
+`http://localhost:3001/api`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Endpoints Esperados
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O `frontend` está configurado para interagir com os seguintes endpoints:
 
-### `npm run eject`
+- **Autenticação (Simulada):**
+  - `POST /login` (Endpoint real a ser implementado no backend)
+- **Pacientes:**
+  - `GET /patients` - Retorna a lista de todos os pacientes.
+  - `POST /patients` - Cria um novo paciente.
+  - `GET /patients/:id` - Retorna os detalhes de um paciente específico.
+  - `PUT /patients/:id` - Atualiza um paciente existente.
+  - `DELETE /patients/:id` - Exclui um paciente.
+- **Prontuários:**
+  - `GET /patients/:patientId/records` - Retorna todos os prontuários de um paciente.
+  - `POST /patients/:patientId/records` - Adiciona um novo prontuário a um paciente.
+  - `GET /geral/todos-prontuarios` - Retorna uma lista de todos os prontuários de todos os pacientes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Modelos de Dados (JSON)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O frontend envia e espera receber dados do backend nos seguintes formatos:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Objeto Paciente:**
+```json
+{
+  "nomeCompleto": "string",
+  "dataNascimento": "YYYY-MM-DD",
+  "genero": "string",
+  "telefonePrincipal": "string",
+  "cep": "string",
+  "logradouro": "string",
+  "numeroEndereco": "string",
+  "complemento": "string",
+  "bairro": "string",
+  "cidade": "string",
+  "estado": "string",
+  "comoConheceu": "string",
+  "motivoInicialBusca": "string",
+  "data_proxima_consulta": "YYYY-MM-DD"
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Objeto Prontuário:**
+```json
+{
+  "data_hora_atendimento": "ISO 8601 DateTime",
+  "tipo_atendimento": "string",
+  "queixa_sessao": "string",
+  "intervencoes_orientacoes": "string",
+  "encaminhamentos": "string",
+  "plano_proxima_sessao": "string",
+  "id_atendente_fk": "string"
+}
+```
 
-## Learn More
+## 🚀 Como Executar o Projeto
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Siga os passos abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento local.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Pré-requisitos
 
-### Code Splitting
+- **Node.js:** (Versão 14.x ou superior)
+- **npm** ou **yarn**
+- Um **servidor de API backend** compatível com os endpoints e modelos de dados descritos acima, rodando em `http://localhost:3001`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Instalação
 
-### Analyzing the Bundle Size
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/Thz069/site_casa_repouso.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Navegue até o diretório do projeto:**
+   ```bash
+   cd site_casa_repouso
+   ```
 
-### Making a Progressive Web App
+3. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Scripts Disponíveis
 
-### Advanced Configuration
+- **`npm start`**: Inicia a aplicação em modo de desenvolvimento em [http://localhost:3000](http://localhost:3000).
+- **`npm test`**: Executa os testes.
+- **`npm run build`**: Compila a aplicação para produção.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 💡 Sugestões para Melhorias Futuras
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Implementar Autenticação Real:** Substituir a simulação por uma autenticação baseada em JWT ou OAuth com o backend.
+- **Validação de Dados:** Adicionar validação nos formulários (frontend e backend) usando bibliotecas como `Yup` ou `Zod`.
+- **Paginação:** Implementar paginação nas listas de pacientes e prontuários para melhor desempenho com grandes volumes de dados.
+- **Documentação da API:** Criar uma documentação formal da API no backend usando ferramentas como Swagger ou OpenAPI.
+- **Testes Unitários e de Integração:** Expandir a cobertura de testes para garantir a confiabilidade dos componentes e serviços.
