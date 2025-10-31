@@ -9,6 +9,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import LoginPage from './components/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import PatientManagementPage from './pages/PatientManagementPage';
 import NewMedicalRecordPage from './pages/NewMedicalRecordPage';
 import AllRecordsListPage from './pages/AllRecordsListPage';
@@ -122,6 +123,7 @@ const AppContent = () => {
         path="/login"
         element={isAuthenticated && !isLoadingAuth ? <Navigate to="/dashboard" /> : <LoginPage />}
       />
+      <Route path="/register" element={<RegisterPage />} />
       <Route
         path="/dashboard"
         element={

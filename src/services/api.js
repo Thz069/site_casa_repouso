@@ -33,36 +33,33 @@ const handleApiError = async (response) => {
 };
 
 /**
- * Simula o processo de login do usuário.
- * ATENÇÃO: Esta função é atualmente simulada e não faz uma chamada real ao backend para autenticação.
- * Num sistema real, esta função faria uma chamada POST para um endpoint de autenticação.
+ * Autentica um usuário no backend.
+ * Realiza uma chamada POST para o endpoint de login da API.
  * @async
  * @param {object} credentials - Objeto contendo as credenciais do usuário.
  * @param {string} credentials.username - O nome de usuário.
  * @param {string} credentials.password - A senha do usuário.
- * @returns {Promise<object>} Uma promessa que resolve com um objeto contendo `success` (boolean),
- * `token` (string) e `user` (objeto com id, name, email) em caso de sucesso simulado,
- * ou rejeita com um erro em caso de falha simulada.
+ * @returns {Promise<object>} Uma promessa que resolve com os dados da resposta do backend
+ * (espera-se que contenha `token` e `user`).
+ * @throws {Error} Se a requisição à API falhar ou retornar um status de erro.
  */
 export const loginUser = async (credentials) => {
-  // TODO: Substituir esta simulação pela chamada real ao backend quando o endpoint de login estiver implementado.
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (credentials.username === 'atendente' && credentials.password === 'senha123') {
-        resolve({
-          success: true,
-          token: 'fake-jwt-token-' + Date.now(),
-          user: {
-            id: 'user01',
-            name: 'Atendente Principal',
-            email: 'atendente@casaespiritual.org',
-          },
-        });
-      } else {
-        reject(new Error('Usuário ou senha inválidos (simulado).'));
-      }
-    }, 500);
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      nome_usuario: credentials.username,
+      senha: credentials.password,
+    }),
   });
+
+  if (!response.ok) {
+    throw await handleApiError(response);
+  }
+
+  return response.json();
 };
 
 /**
@@ -258,5 +255,31 @@ export const fetchAllRecordsAcrossAllPatients = async (token) => {
     },
   });
   if (!response.ok) throw await handleApiError(response);
+  return response.json();
+};
+
+/**
+ * Registra um novo atendente no sistema.
+ * @async
+ * @param {object} userData - Objeto contendo os dados do novo atendente.
+ * @param {string} userData.nome_completo_atendente - O nome completo do atendente.
+ * @param {string} userData.nome_usuario - O nome de usuário para login.
+ * @param {string} userData.senha - A senha para o novo atendente.
+ * @returns {Promise<object>} Uma promessa que resolve com a resposta do backend.
+ * @throws {Error} Se a requisição à API falhar.
+ */
+export const registerUser = async (userData) => {
+  const response = await fetch(`${API_BASE_URL}/auth/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
+
+  if (!response.ok) {
+    throw await handleApiError(response);
+  }
+
   return response.json();
 };

@@ -7,6 +7,7 @@
  */
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Importar Link
 import { useAuth } from '../contexts/AuthContext';
 import './LoginPage.css'; // Arquivo de estilos para a página de login
 
@@ -86,6 +87,9 @@ const LoginPage = () => {
           {/* Exibe mensagens de erro de autenticação provenientes do AuthContext */}
           {authError && <p className="error-message">{authError}</p>}
         </form>
+        <p className="register-link">
+          Não tem uma conta? <Link to="/register">Cadastre-se</Link>
+        </p>
       </div>
     </div>
   );
