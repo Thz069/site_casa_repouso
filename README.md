@@ -13,10 +13,10 @@ O projeto é estruturado de forma modular para separar responsabilidades, facili
 
 ## ✨ Funcionalidades Detalhadas
 
-### 1. Autenticação
-- **Login Simulado:** Acesso seguro via página de login. **Atualmente, a autenticação é simulada no frontend** (`src/services/api.js`) com as credenciais:
-  - **Usuário:** `atendente`
-  - **Senha:** `senha123`
+### 1. Autenticação e Cadastro de Usuários
+
+- **Login e Cadastro:** Acesso seguro via página de login e uma página de cadastro para novos usuários.
+- **Comunicação com Backend:** A autenticação é feita através de chamadas à API, que valida as credenciais e retorna um token de acesso.
 - **Rotas Protegidas:** Utiliza `ProtectedRoute` para garantir que apenas usuários autenticados acessem as páginas de dados.
 
 ### 2. Gestão de Pacientes (CRUD Completo)
@@ -41,8 +41,9 @@ O frontend espera que um servidor backend esteja rodando e respondendo na seguin
 
 O `frontend` está configurado para interagir com os seguintes endpoints:
 
-- **Autenticação (Simulada):**
-  - `POST /login` (Endpoint real a ser implementado no backend)
+- **Autenticação:**
+  - `POST /auth/login` - Autentica um usuário e retorna um token.
+  - `POST /auth/register` - Registra um novo usuário.
 - **Pacientes:**
   - `GET /patients` - Retorna a lista de todos os pacientes.
   - `POST /patients` - Cria um novo paciente.
@@ -126,7 +127,6 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente de de
 
 ## 💡 Sugestões para Melhorias Futuras
 
-- **Implementar Autenticação Real:** Substituir a simulação por uma autenticação baseada em JWT ou OAuth com o backend.
 - **Validação de Dados:** Adicionar validação nos formulários (frontend e backend) usando bibliotecas como `Yup` ou `Zod`.
 - **Paginação:** Implementar paginação nas listas de pacientes e prontuários para melhor desempenho com grandes volumes de dados.
 - **Documentação da API:** Criar uma documentação formal da API no backend usando ferramentas como Swagger ou OpenAPI.
